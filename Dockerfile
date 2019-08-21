@@ -15,7 +15,10 @@ FROM tomcat:9.0-jre8
 # JasperReports Server WAR file installer names for version 6.4 and beyond
 # are named TIB_js-jrs_<version number>_bin.zip
 
-COPY resources/TIB_js-jrs_*_bin.zip /tmp/jasperserver.zip
+ARG JRS_ZIP_URL="resources/TIB_js-jrs_*_bin.zip"
+RUN echo JRS_ZIP_URL=$JRS_ZIP_URL
+ADD $JRS_ZIP_URL /tmp/jasperserver.zip
+#COPY resources/TIB_js-jrs_*_bin.zip /tmp/jasperserver.zip
 
 RUN echo "apt-get" && echo "nameserver 8.8.8.8" | tee /etc/resolv.conf > /dev/null && \
     apt-get update > /dev/null && apt-get install -y --no-install-recommends apt-utils  > /dev/null && \
