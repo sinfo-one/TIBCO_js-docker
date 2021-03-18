@@ -36,15 +36,7 @@ ENV HTTPS_PORT          ${HTTPS_PORT:-8443}
 ENV JAVASCRIPT_RENDERING_ENGINE  ${JAVASCRIPT_RENDERING_ENGINE:-chromium}
 
 ENV POSTGRES_JDBC_DRIVER_VERSION ${POSTGRES_JDBC_DRIVER_VERSION:-42.2.5}
-ARG JASPERREPORTS_SERVER_VERSION="7.8.0"
-ARG JASPERREPORTS_SERVER_ZIP_URL="resources/TIB_js-jrs_$JASPERREPORTS_SERVER_VERSION_bin.zip"
-ADD $JASPERREPORTS_SERVER_ZIP_URL /tmp/jasperserver.zip
-# unpackWARInstaller.sh
-RUN unzip -o -q /tmp/jasperserver.zip -d resources/ && \
-    cd jasperreports-server-pro-$JASPERREPORTS_SERVER_VERSION-bin && \
-    unzip -o -q jasperserver-pro.war -d jasperserver-pro
-
-
+ENV JASPERREPORTS_SERVER_VERSION ${JASPERREPORTS_SERVER_VERSION:-7.8.0}
 ENV EXPLODED_INSTALLER_DIRECTORY ${EXPLODED_INSTALLER_DIRECTORY:-resources/jasperreports-server-pro-$JASPERREPORTS_SERVER_VERSION-bin}
 
 # This Dockerfile requires an exploded JasperReports Server WAR file installer file
