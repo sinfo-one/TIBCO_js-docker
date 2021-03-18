@@ -41,7 +41,7 @@ ARG JASPERREPORTS_SERVER_ZIP_URL="resources/TIB_js-jrs_$JASPERREPORTS_SERVER_VER
 ADD $JASPERREPORTS_SERVER_ZIP_URL /tmp/jasperserver.zip
 # unpackWARInstaller.sh
 RUN unzip -o -q /tmp/jasperserver.zip -d resources/ && \
-    cd jasperreports-server-pro-$JASPERREPORTS_SERVER_VERSION-bin &&
+    cd jasperreports-server-pro-$JASPERREPORTS_SERVER_VERSION-bin && \
     unzip -o -q jasperserver-pro.war -d jasperserver-pro
 
 
