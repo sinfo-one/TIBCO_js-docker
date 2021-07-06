@@ -27,7 +27,7 @@ case "$PACKAGE_MGR" in
   exit 1
   ;;
 "apt_get")
-  apt-get install -y --no-install-recommends chromium
+  apt-get update && apt-get install -y --no-install-recommends chromium
   ;;
 esac
 
